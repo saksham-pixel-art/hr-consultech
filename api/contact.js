@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     }
 
     const sheetId = process.env.GOOGLE_SHEET_ID;
-    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL || process.env.client_email;
     const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
 
     if (!sheetId || !clientEmail || !privateKey) {
