@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const POPPINS = { fontFamily: 'Poppins, sans-serif' };
 const INTER = { fontFamily: 'Inter, sans-serif' };
-const SHEET_ENDPOINT = import.meta.env.VITE_SHEETS_WEBHOOK_URL || "";
+const CONTACT_API_URL = import.meta.env.VITE_CONTACT_API_URL || "/api/contact";
 
 const emptyForm = {
   name: "",
@@ -58,11 +58,6 @@ export default function ContactModal({ isOpen, onClose }) {
     event.preventDefault();
     setError("");
 
-    if (!SHEET_ENDPOINT) {
-      setError("Spreadsheet endpoint is not configured yet.");
-      return;
-    }
-
     setStatus("submitting");
     const payload = {
       ...form,
@@ -71,12 +66,16 @@ export default function ContactModal({ isOpen, onClose }) {
     };
 
     try {
-      await fetch(SHEET_ENDPOINT, {
+      const response = await fetch(CONTACT_API_URL, {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
       setStatus("sent");
       setForm(emptyForm);
     } catch {
