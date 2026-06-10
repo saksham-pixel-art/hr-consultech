@@ -31,7 +31,9 @@ export default function Navbar() {
           <img
             alt="EdGro Tech Logo"
             className="h-10 w-10 object-contain rounded"
-            src="/logo.png"
+            src="/logo-optimized.png"
+            width="40"
+            height="40"
           />
           <span className="text-[#f7bb74] font-semibold text-xl" style={{ fontFamily: 'Poppins, sans-serif' }}>EdGro Tech</span>
         </div>

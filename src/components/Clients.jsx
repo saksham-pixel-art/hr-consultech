@@ -49,9 +49,12 @@ export default function Clients() {
             style={{ background: "#1e2022", borderColor: "#504539" }}
           >
             <img
-              src="/clients.png"
+              src="/clients-optimized.jpg"
               alt="TCS, Infosys, and Salty client logos"
               className="w-full max-w-[720px] rounded-lg object-contain"
+              width="720"
+              height="538"
+              loading="lazy"
             />
           </div>
         </div>

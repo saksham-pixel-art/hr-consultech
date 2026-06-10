@@ -13,9 +13,12 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3 mb-2">
               <img
-                src="/logo.png"
+                src="/logo-optimized.png"
                 alt="EdGro Tech Logo"
                 className="h-10 w-10 rounded object-contain"
+                width="40"
+                height="40"
+                loading="lazy"
               />
               <span style={{ ...POPPINS, fontSize: '20px', fontWeight: 600, color: '#f7bb74' }}>EdGro Tech</span>
             </div>

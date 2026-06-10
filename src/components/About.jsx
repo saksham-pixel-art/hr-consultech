@@ -32,7 +32,10 @@ export default function About() {
               alt="Modern Office Interior"
               className="relative w-full h-[480px] object-cover rounded-lg border z-10 transition-transform duration-500 group-hover:scale-[1.01]"
               style={{ borderColor: "#C6904D" }}
-              src="/office-interior.png"
+              src="/office-interior-optimized.jpg"
+              width="900"
+              height="604"
+              loading="lazy"
             />
           </div>
 

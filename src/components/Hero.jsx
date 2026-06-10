@@ -89,7 +89,10 @@ export default function Hero() {
           <img
             alt="Corporate recruitment team"
             className="relative w-full h-auto rounded-lg object-cover opacity-90 shadow-2xl border border-[#504539]/30 z-0"
-            src="/hero-recruitment.png"
+            src="/hero-recruitment-optimized.jpg"
+            width="900"
+            height="502"
+            fetchPriority="high"
           />
         </div>
       </div>
