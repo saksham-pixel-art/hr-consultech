@@ -32,7 +32,7 @@ export default function Hero({ onOpenContact }) {
           </h1>
 
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '18px', lineHeight: 1.6, color: '#d4c4b4' }} className="max-w-xl">
-            Exclusive recruitment partners for industry leaders including TCS, Infosys, and Salty. Elevating corporate teams with precision placement.
+            Exclusive recruitment partners for industry leaders including TCS, Infosys, and many more. Elevating corporate teams with precision placement.
           </p>
 
           {/* Buttons */}
@@ -67,9 +67,9 @@ export default function Hero({ onOpenContact }) {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#504539]/60">
             {[
-              { value: "500+", label: "Placements" },
-              { value: "19+", label: "Industries" },
-              { value: "3", label: "Corporate Tie-Ups" },
+              { value: "1000+", label: "Placements" },
+              { value: "16+", label: "Industries" },
+              { value: "34", label: "Corporate Tie-Ups" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div style={{ fontFamily: 'Poppins, sans-serif', fontSize: '28px', fontWeight: 700, color: '#f7bb74' }}>

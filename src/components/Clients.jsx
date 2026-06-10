@@ -50,7 +50,7 @@ export default function Clients() {
           >
             <img
               src="/clients-optimized.jpg"
-              alt="TCS, Infosys, and Salty client logos"
+              alt="TCS, Infosys, and many more client logos"
               className="w-full max-w-[720px] rounded-lg object-contain"
               width="720"
               height="538"

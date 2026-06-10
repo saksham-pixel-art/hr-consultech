@@ -22,7 +22,7 @@ export default function Industries() {
             Industries We Serve
           </h2>
           <p style={{ ...INTER, fontSize: '16px', lineHeight: 1.7, color: '#d4c4b4', marginTop: '16px' }}>
-            Specialized talent acquisition across 19+ distinct sectors.
+            Specialized talent acquisition across 16+ distinct sectors.
           </p>
         </div>
 
