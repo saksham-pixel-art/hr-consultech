@@ -1,4 +1,4 @@
-export default function Hero() {
+export default function Hero({ onOpenContact }) {
   return (
     <section
       id="home"
@@ -50,8 +50,9 @@ export default function Hero() {
               Explore Services
               <span className="material-symbols-outlined text-lg">arrow_forward</span>
             </a>
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={onOpenContact}
               className="inline-flex items-center gap-2 px-8 py-4 rounded font-bold text-sm tracking-wide hover:bg-[#f7bb74]/10 transition-all active:scale-95 border"
               style={{
                 borderColor: "#f7bb74",
@@ -60,7 +61,7 @@ export default function Hero() {
               }}
             >
               Contact Us
-            </a>
+            </button>
           </div>
 
           {/* Stats */}

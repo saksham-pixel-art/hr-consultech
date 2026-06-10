@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Navbar() {
+export default function Navbar({ onOpenContact }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -16,8 +16,12 @@ export default function Navbar() {
     { label: "Services", href: "#services" },
     { label: "Industries", href: "#industries" },
     { label: "Our Clients", href: "#clients" },
-    { label: "Contact", href: "#contact" },
   ];
+
+  const openContact = () => {
+    setIsMobileMenuOpen(false);
+    onOpenContact();
+  };
 
   return (
     <nav
@@ -53,8 +57,9 @@ export default function Navbar() {
         </div>
 
         {/* CTA Button */}
-        <a
-          href="#contact"
+        <button
+          type="button"
+          onClick={openContact}
           className="hidden md:inline-flex items-center justify-center px-6 py-3 rounded text-sm font-bold tracking-wide hover:opacity-90 transition-opacity active:scale-95"
           style={{
             background: "linear-gradient(to right, #C6904D, #E5B171)",
@@ -63,7 +68,7 @@ export default function Navbar() {
           }}
         >
           Get In Touch
-        </a>
+        </button>
 
         {/* Mobile Toggle */}
         <button
@@ -90,9 +95,9 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setIsMobileMenuOpen(false)}
+          <button
+            type="button"
+            onClick={openContact}
             className="w-full text-center px-6 py-3 rounded text-sm font-bold mt-2 hover:opacity-90 transition-opacity"
             style={{
               background: "linear-gradient(to right, #C6904D, #E5B171)",
@@ -101,7 +106,7 @@ export default function Navbar() {
             }}
           >
             Get In Touch
-          </a>
+          </button>
         </div>
       )}
     </nav>

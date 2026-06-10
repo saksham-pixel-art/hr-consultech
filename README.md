@@ -1,16 +1,56 @@
-# React + Vite
+# HR Consultech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite landing page for EdGro Tech recruitment services.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Contact form spreadsheet setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The "Get In Touch" popup submits form data to `VITE_SHEETS_WEBHOOK_URL`.
 
-## Expanding the ESLint configuration
+1. Copy `.env.example` to `.env`.
+2. Create a Google Sheet with columns:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+Submitted At, Name, Email, Phone, Company, Role, Interest, Message, Source
+```
+
+3. Open `Extensions > Apps Script` in that sheet and deploy this as a web app:
+
+```js
+const SHEET_NAME = "Sheet1";
+
+function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  const data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    data.submittedAt || new Date().toISOString(),
+    data.name || "",
+    data.email || "",
+    data.phone || "",
+    data.company || "",
+    data.role || "",
+    data.interest || "",
+    data.message || "",
+    data.source || "",
+  ]);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+```
+
+4. Set the deployed web app URL in `.env`:
+
+```text
+VITE_SHEETS_WEBHOOK_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
+```
+
+5. Restart the Vite server after changing `.env`.
