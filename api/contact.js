@@ -54,6 +54,10 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error("Contact form submission failed", error);
-    return res.status(500).json({ ok: false, error: "Could not save contact submission" });
+    return res.status(500).json({ 
+      ok: false, 
+      error: "Could not save contact submission",
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 }

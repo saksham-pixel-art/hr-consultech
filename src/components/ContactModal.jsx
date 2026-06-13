@@ -73,14 +73,17 @@ export default function ContactModal({ isOpen, onClose }) {
       });
 
       if (!response.ok) {
-        throw new Error("Form submission failed");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Form submission failed:", response.status, errorData);
+        throw new Error(errorData.error || "Form submission failed");
       }
 
       setStatus("sent");
       setForm(emptyForm);
-    } catch {
+    } catch (err) {
+      console.error("Contact form error:", err);
       setStatus("idle");
-      setError("Could not submit the form. Please try again.");
+      setError(err.message || "Could not submit the form. Please try again.");
     }
   };
 
